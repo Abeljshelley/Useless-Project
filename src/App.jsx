@@ -15,7 +15,6 @@ function App() {
     const [message, setMessage] = useState("");
     const [response, setResponse] = useState("");
     const API_KEY = import.meta.env.VITE_API_KEY;
-    console.log(API_KEY);
 
     const handleSend = async () => {
         if (!message) return;
@@ -53,7 +52,7 @@ function App() {
             <div className={`c1 ${response ? 'animate-search-bar' : ''}`}>
                 <input
                     type="text"
-                    placeholder="Search..."
+                    placeholder="Ask me anything..."
                     className="inputBox"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
