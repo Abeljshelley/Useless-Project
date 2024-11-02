@@ -23,8 +23,9 @@ function App() {
         try {
             const genAI = new GoogleGenerativeAI(API_KEY);
             const model = genAI.getGenerativeModel({ 
-              model: "gemini-1.5-flash",
-            systemInstruction: "Respond in plain text without any Markdown formatting less than 50 words" });
+                model: "gemini-1.5-flash",
+                systemInstruction: "Respond in plain text without any Markdown formatting less than 50 words"
+            });
             const result = await model.generateContent(message);
 
             setResponse(result.response.text || "No response received");
@@ -48,7 +49,7 @@ function App() {
 
     return (
         <div className="app">
-            <h3>RandomGPT!!</h3>
+            <h3 className={`title ${response ? 'animate-title' : ''}`}>RandomGPT!!</h3>
             <div className={`c1 ${response ? 'animate-search-bar' : ''}`}>
                 <input
                     type="text"
@@ -56,7 +57,7 @@ function App() {
                     className="inputBox"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    onKeyDown={(e) => e.key==='Enter' && handleSend()}
+                    onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                 />
                 <button className="send-button" onClick={handleSend}>&#10145;</button>
             </div>

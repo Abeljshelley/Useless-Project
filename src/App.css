@@ -1,12 +1,14 @@
-/* Reset some default styles */
+/* General styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body{
- max-width:fit-content;
+
+body {
+  max-width: fit-content;
 }
+
 .app {
   background-color: rgb(44, 37, 37);
   height: 100vh;
@@ -20,13 +22,12 @@ body{
   text-align: center;
 }
 
-/* Title Styling */
-h3 {
+h3.title {
   font-size: 3rem;
   margin-bottom: 20px;
+  transition: transform 0.5s ease;
 }
 
-/* Container for input and button */
 .c1 {
   display: flex;
   justify-content: center;
@@ -35,9 +36,9 @@ h3 {
   max-width: 600px;
   padding: 0 20px;
   margin-bottom: 30px;
+  transition: transform 0.5s ease;
 }
 
-/* Input styling */
 .inputBox {
   flex: 1;
   padding: 15px;
@@ -54,9 +55,8 @@ h3 {
   color: rgb(245, 246, 246);
 }
 
-/* Send button styling */
 .send-button {
-  background-color: #2c312f; 
+  background-color: #2c312f;
   color: rgb(242, 246, 241);
   border: none;
   border-radius: 30px;
@@ -69,79 +69,39 @@ h3 {
 }
 
 .send-button:hover {
-  background-color: #0f5713; 
+  background-color: #0f5713;
   transform: scale(1.05);
 }
 
-/* Heading below input */
 .heading {
   font-size: 2rem;
   margin-top: 20px;
+  opacity: 0.8;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  h3 {
-      font-size: 2.5rem;
-  }
-  .heading {
-      font-size: 1.5rem;
-  }
-  .inputBox {
-      font-size: 0.9rem;
-      padding: 12px;
-  }
-  .send-button {
-      font-size: 1rem;
-      padding: 0 15px;
-  }
+/* Animation classes */
+.animate-title {
+  transform: translateY(-30px); /* Moves the title upwards */
 }
 
-@media (max-width: 480px) {
-  h3 {
-      font-size: 2rem;
-  }
-  .inputBox {
-      width: 100%;
-  }
-  .c1 {
-      flex-direction: column;
-      gap: 10px;
-  }
-  .send-button {
-      width: 100%;
-      margin-left: 0;
-  }
+.animate-search-bar {
+  transform: translateY(-50px); /* Moves the search bar upwards */
 }
-/* Spinner container */
+
+.animate-heading {
+  transform: translateY(20px); /* Moves the heading text downwards */
+  opacity: 1;
+}
+
+/* Spinner styles */
 .spinner-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: rgb(44, 37, 37);
-}
-
-/* Spinner animation */
-.loading-spinner {
   width: 100vw;
-  height: 100vh;
-  border: 6px solid rgba(255, 255, 255, 0.2);
-  border-top: 6px solid rgb(238, 242, 245);
-  border-radius: 50%;
-  animation: spin 3s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-/* Spinner styling */
-.spinner-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  background-color: rgb(44, 37, 37);
 }
 
 .loading-spinner {
@@ -159,48 +119,34 @@ h3 {
   }
 }
 
-/* Animations for the search bar and heading */
-.c1 {
-  transition: transform 0.5s ease;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h3.title {
+    font-size: 2.5rem;
+  }
+  .heading {
+    font-size: 1.5rem;
+  }
+  .inputBox {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+  .send-button {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
 }
 
-.heading {
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-
-.animate-search-bar {
-  transform: translateY(-50px); /* Move the search bar upwards */
-}
-
-.animate-heading {
-  transform: translateY(20px); /* Move the heading text downwards */
-  opacity: 1;
-}
-
-/* Other CSS */
-.app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.c1 {
-  display: flex;
-  align-items: center;
-}
-
-.inputBox {
-  padding: 10px;
-  font-size: 16px;
-  margin-right: 10px;
-}
-
-.send-button {
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.heading {
-  margin-top: 20px;
-  opacity: 0.8;
+@media (max-width: 480px) {
+  h3.title {
+    font-size: 2rem;
+  }
+  .c1 {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .send-button {
+    width: 100%;
+    margin-left: 0;
+  }
 }
