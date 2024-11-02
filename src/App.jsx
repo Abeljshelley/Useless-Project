@@ -12,24 +12,42 @@ function LoadingSpinner() {
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
+    const [turnCount, setTurnCount] = useState(1); // Track turn count
     const [message, setMessage] = useState("");
     const [response, setResponse] = useState("");
     const API_KEY = import.meta.env.VITE_API_KEY;
-    console.log(API_KEY);
+
+    const randomizePrompt = (prompt) => {
+        const randomChoice = Math.floor(Math.random() * 2);
+        switch (randomChoice) {
+            case 0:
+                return `Repeat what I said in negative sense ${prompt}`;
+            case 1:
+                return `${prompt}... dont't answer it and say a lame excuse`;
+            default:
+                return prompt;
+        }
+    };
 
     const handleSend = async () => {
         if (!message) return;
 
         try {
+            let prompt = message;
+            if (turnCount % 2 === 0) {
+               prompt = randomizePrompt(prompt);
+            }
+
             const genAI = new GoogleGenerativeAI(API_KEY);
             const model = genAI.getGenerativeModel({ 
                 model: "gemini-1.5-flash",
                 systemInstruction: "Respond in plain text without any Markdown formatting less than 50 words"
             });
-            const result = await model.generateContent(message);
+            const result = await model.generateContent(prompt);
 
             setResponse(result.response.text || "No response received");
             setMessage("");
+            setTurnCount(turnCount + 1);
         } catch (error) {
             console.error("Error generating content:", error);
             setResponse("An error occurred while generating the response.");
