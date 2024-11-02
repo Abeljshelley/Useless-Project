@@ -22,7 +22,9 @@ function App() {
 
         try {
             const genAI = new GoogleGenerativeAI(API_KEY);
-            const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+            const model = genAI.getGenerativeModel({ 
+              model: "gemini-1.5-flash",
+            systemInstruction: "Respond in plain text without any Markdown formatting less than 50 words" });
             const result = await model.generateContent(message);
 
             setResponse(result.response.text || "No response received");
