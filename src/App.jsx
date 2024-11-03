@@ -17,6 +17,18 @@ function App() {
     const [response, setResponse] = useState("");
     const API_KEY = import.meta.env.VITE_API_KEY;
 
+    const randomizePrompt = (prompt) => {
+        const randomChoice = Math.floor(Math.random() * 2);
+        switch (randomChoice) {
+            case 0:
+                return `Repeat what I said in negative sense ${prompt}`;
+            case 1:
+                return `${prompt}... dont't answer it and say a lame excuse`;
+            default:
+                return prompt;
+        }
+    };
+
     const handleSend = async () => {
         if (!message) return;
 
