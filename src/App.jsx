@@ -12,7 +12,7 @@ function LoadingSpinner() {
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
-    const [turnCount, setTurnCount] = useState(1); // Track turn count
+    const [turnCount, setTurnCount] = useState(1);
     const [message, setMessage] = useState("");
     const [response, setResponse] = useState("");
     const API_KEY = import.meta.env.VITE_API_KEY;
